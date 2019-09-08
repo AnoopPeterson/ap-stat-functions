@@ -22,7 +22,7 @@ def std_dev(data : list):
 		diff = pow((entry - the_mean), 2)
 		sum_ += diff
 	sum_ /= (len(data) - 1)
-	return sum_
+	return pow(sum_, 1/2)
 
 def variance(data : list):
 	return pow(std_dev(data), 2)
@@ -39,7 +39,7 @@ def quartiles(data : list):
 		return (lower_med, upper_med)
 	else:
 		med = median(data)
-		lower_half = data[:data.index(med) + 1]
+		lower_half = data[:data.index(med)]
 		upper_half = data[data.index(med):]
 		lower_med = median(lower_half)
 		upper_med = median(upper_half)
@@ -59,11 +59,15 @@ def outliers(data : list):
 	return outliers
 
 
-data = [1,2,3,4,5]
+data = [4, 5, 8, 10, 12, 12, 13, 14, 17, 17, 18, 19, 20]
+
+print(len(data) % 2)
 
 print('mean ', mean(data))
 print('std_dev ', std_dev(data))
 print('variance', variance(data))
+
+median(data)
 
 print('median ', median(data))
 print('quartiles ', quartiles(data))
